@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-  var text = 'http://www.baidu.com';//req.query.text;
+  var text = 'http://111.230.151.66/connect?url=';//req.query.text;
   try {
     var img = qr.image(text,{size :10});
     res.writeHead(200, {'Content-Type': 'image/png'});
