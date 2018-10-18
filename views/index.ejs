@@ -10,7 +10,7 @@
     		window.location = 'http://www.baidu.com';
     	}
 
-    socket = io.connect('ws://127.0.0.1:3000');
+    socket = io.connect('ws://127.0.0.1:80');
 
     //scan sucessful, redirect to 
     socket.on("redirect", function(object) {
