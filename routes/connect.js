@@ -4,11 +4,11 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     
   res.writeHead(200, {'Content-Type': 'application/json'});
-  res.end('connnect success');
+  res.end("{ code: 'ok'}");
 
   //connect to localhost to notify scan success
 	var io = require("socket.io-client");
-	let socket =  io.connect("http://localhost:3000");
+	let socket =  io.connect("http://localhost");
 	if (req.query.url != undefined && req.query.url != '') {
 		console.log('redirect uri:' + req.query.url);
 		socket.emit('scan', {uri: req.query.url});
