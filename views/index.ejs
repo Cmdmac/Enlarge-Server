@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+    	function jump() {
+    		window.location = 'http://www.baidu.com';
+    	}
+
+    socket = io.connect('ws://127.0.0.1:3000');
+
+    //scan sucessful, redirect to 
+    socket.on("redirect", function(object) {
+    	console.log('redirect:' + object.uri);
+    	window.location = object.uri;        
+    });
+
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <img src="/qrcode"/>
+    <a href="javascript:jump()" target="_self">Location</a>
+  </body>
+</html>
