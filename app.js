@@ -20,15 +20,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//dist directory to deploy vue.js release project
+app.use(express.static(path.resolve(__dirname, 'dist')))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/qrcode', qrcodeRouter);
 app.use('/connect', connectRouter);
 
-app.use(function(req, res, next) {
-	console.log('xxx')
-}) 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
