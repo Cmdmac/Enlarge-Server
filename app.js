@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.resolve(__dirname, 'dist')))
 
 
-app.use('/', indexRouter);
+app.use('/a', indexRouter);
 app.use('/users', usersRouter);
 app.use('/qrcode', qrcodeRouter);
 app.use('/connect', connectRouter);

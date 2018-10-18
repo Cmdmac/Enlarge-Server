@@ -29,7 +29,7 @@ io.on('connection', function(socket) {
   console.log('connection:' + socket.request.connection.remoteAddress);  
   socket.on('scan', function(data) {
     //when receive scan success event, broadcast redirect event to browser client
-    socket.broadcast.emit('redirect', {uri: data.uri})
+    socket.broadcast.emit('redirect', data)
   })
 });
 

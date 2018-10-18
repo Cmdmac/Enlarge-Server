@@ -8,12 +8,13 @@ router.get('/', function (req, res, next) {
 
   //connect to localhost to notify scan success
 	var io = require("socket.io-client");
-	let socket =  io.connect("http://localhost");
-	if (req.query.url != undefined && req.query.url != '') {
-		console.log('redirect uri:' + req.query.url);
-		socket.emit('scan', {uri: req.query.url});
+	let socket =  io.connect("ws://localhost");
+
+	if (req.query.config != undefined && req.query.config != '') {
+		console.log('redirect config:' + req.query.config);
+		socket.emit('scan', JSON.parse(req.query.config));
 	} else {
-		console.log('redirect uri is empty');
+		console.log('redirect config is empty');
 	}
 
 });
