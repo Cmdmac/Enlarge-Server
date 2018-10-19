@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var qrcodeRouter = require('./routes/qrcode');
 var connectRouter = require('./routes/connect');
+var getAppsRouter = require('./routes/getApps');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/a', indexRouter);
 app.use('/users', usersRouter);
 app.use('/qrcode', qrcodeRouter);
 app.use('/connect', connectRouter);
+app.use('/getApps', getAppsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
