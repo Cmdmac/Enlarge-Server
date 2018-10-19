@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-  var text = 'http://172.16.46.136/connect?config=';//req.query.text;
+  var text = 'http://111.230.151.66/connect?config=';//req.query.text;
   try {
     var img = qr.image(text,{size :10});
     res.writeHead(200, {'Content-Type': 'image/png'});
