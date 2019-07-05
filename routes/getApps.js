@@ -5,29 +5,42 @@ router.get('/', function (req, res, next) {
     
   res.writeHead(200, {'Content-Type': 'application/json'});
 
+var addr;
+var interfaces = os.networkInterfaces();
+    for (var devName in interfaces) {
+        var iface = interfaces[devName];
+        for (var i = 0; i < iface.length; i++) {
+            var alias = iface[i];
+            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                addr = alias.address;
+                break;
+            }
+        }
+    }
+
   var apps = [[{ name: "FileManager",
                 icon: "images/compatible_ie.png"
                 }, {
                     name: "Calendar",
-                    icon: "images/compatible_chrome.png"
+                    icon: addr + "images/compatible_chrome.png"
                 }, {
                     name: "opera",
-                    icon: "images/compatible_opera.png"
+                    icon: addr + "images/compatible_opera.png"
                 },{
                     name: "safari",
-                    icon: "images/compatible_safari.png"
+                    icon: addr + "images/compatible_safari.png"
                 }],
                 [{
                     name: "ie",
-                    icon: "images/compatible_ie.png"
+                    icon: addr + "images/compatible_ie.png"
                 }, {
                     name: "chrome",
-                    icon: "images/compatible_chrome.png"
+                    icon: addr +"images/compatible_chrome.png"
                 }, {
-                    name: "opera",
+                    name: addr +"opera",
                     icon: "images/compatible_opera.png"
                 },{
-                    name: "safari",
+                    name: addr +"safari",
                     icon: "images/compatible_safari.png"
                 }]];
   res.end(JSON.stringify(apps));
